@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%; /* #FFFFFF */
+  --foreground: 211 65% 24%; /* #1B365D */
+  --muted: 0 0% 90%; /* #E6E6E6 */
+  --muted-foreground: 211 65% 30%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 211 65% 24%;
+  --card: 0 0% 100%;
+  --card-foreground: 211 65% 24%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --primary: 207 59% 66%;  /* #74ACDF */
+  --primary-foreground: 211 100% 99%;
+  --secondary: 0 0% 90%;  /* #E6E6E6 */
+  --secondary-foreground: 211 65% 24%;
+  --accent: 41 97% 53%; /* #FDB813 */
+  --accent-foreground: 211 65% 24%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 211 65% 24%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 211 65% 24%; /* #1B365D */
+  --foreground: 0 0% 100%; /* #FFFFFF */
+  --muted: 211 30% 40%;
+  --muted-foreground: 0 0% 90%;
+  --popover: 211 65% 24%;
+  --popover-foreground: 0 0% 100%;
+  --card: 211 65% 24%;
+  --card-foreground: 0 0% 100%;
+  --border: 211 30% 40%;
+  --input: 211 30% 40%;
+  --primary: 207 59% 66%;  /* #74ACDF */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 211 30% 40%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 41 97% 53%; /* #FDB813 */
+  --accent-foreground: 211 65% 24%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 207 59% 66%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-opensans text-foreground bg-background;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-semibold;
+  }
+}
+
+@layer components {
+  .hero-pattern {
+    background-color: hsl(var(--primary));
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-opensans {
+  font-family: 'Open Sans', sans-serif;
+}
