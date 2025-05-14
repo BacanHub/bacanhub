@@ -10,18 +10,17 @@
     // string into just a query string, and then redirects the browser
     // to the new URL with only a query string and hash fragment
     
-    // Parse the URL
+    // For GitHub Pages with repository name /bacanhub/
     var pathSegments = window.location.pathname.split('/');
-    var repoName = pathSegments[1];
-    var location = window.location;
+    var repoName = 'bacanhub';
     
-    // If this is a GitHub Pages repo, the second segment is the repo name
-    var segmentCount = 1;
+    // Skip the repo name in the path
+    var segmentCount = 2; // Skip domain and repo name
     
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+      '/' + repoName + '/?/' +
       l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
       (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
       l.hash
