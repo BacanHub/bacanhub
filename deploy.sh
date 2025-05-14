@@ -16,9 +16,6 @@ cd dist
 echo "📄 Creating .nojekyll file..."
 touch .nojekyll
 
-# Create CNAME file for custom domain
-echo "bacanhub.github.io" > CNAME
-
 # Initialize git repository if it doesn't exist
 if [ ! -d .git ]; then
   echo "🔄 Initializing git repository..."
