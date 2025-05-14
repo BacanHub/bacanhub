@@ -5,48 +5,26 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%; /* #FFFFFF */
-  --foreground: 211 65% 24%; /* #1B365D */
-  --muted: 0 0% 90%; /* #E6E6E6 */
-  --muted-foreground: 211 65% 30%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 211 65% 24%;
-  --card: 0 0% 100%;
-  --card-foreground: 211 65% 24%;
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --primary: 207 59% 66%;  /* #74ACDF */
-  --primary-foreground: 211 100% 99%;
-  --secondary: 0 0% 90%;  /* #E6E6E6 */
-  --secondary-foreground: 211 65% 24%;
-  --accent: 41 97% 53%; /* #FDB813 */
-  --accent-foreground: 211 65% 24%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 211 65% 24%;
-  --radius: 0.5rem;
-}
-
-.dark {
-  --background: 211 65% 24%; /* #1B365D */
-  --foreground: 0 0% 100%; /* #FFFFFF */
-  --muted: 211 30% 40%;
-  --muted-foreground: 0 0% 90%;
-  --popover: 211 65% 24%;
-  --popover-foreground: 0 0% 100%;
-  --card: 211 65% 24%;
-  --card-foreground: 0 0% 100%;
-  --border: 211 30% 40%;
-  --input: 211 30% 40%;
-  --primary: 207 59% 66%;  /* #74ACDF */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 211 30% 40%;
-  --secondary-foreground: 0 0% 100%;
-  --accent: 41 97% 53%; /* #FDB813 */
-  --accent-foreground: 211 65% 24%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 207 59% 66%;
+  /* Modo claro con alto contraste */
+  --background: 0 0% 100%; /* #FFFFFF - Blanco puro */
+  --foreground: 220 30% 15%; /* #1A2234 - Casi negro */
+  --muted: 220 10% 90%; /* #E8EBF0 - Gris muy claro */
+  --muted-foreground: 220 30% 20%; /* #232D44 - Oscuro para contraste */
+  --popover: 0 0% 100%; /* Blanco */
+  --popover-foreground: 220 30% 15%; /* Casi negro */
+  --card: 0 0% 100%; /* Blanco */
+  --card-foreground: 220 30% 15%; /* Casi negro */
+  --border: 220 10% 75%; /* #BFC5D0 - Gris medio */
+  --input: 220 10% 75%;
+  --primary: 220 80% 30%; /* #0A3D8F - Azul oscuro */
+  --primary-foreground: 0 0% 100%; /* Blanco puro */
+  --secondary: 45 100% 50%; /* #FFC107 - Amarillo */
+  --secondary-foreground: 220 30% 15%; /* Casi negro */
+  --accent: 0 80% 50%; /* #E53935 - Rojo */
+  --accent-foreground: 0 0% 100%; /* Blanco puro */
+  --destructive: 0 84% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --ring: 220 80% 30%;
   --radius: 0.5rem;
 }
 
@@ -84,6 +62,50 @@ html {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Estilos responsive */
+  @media screen and (max-width: 640px) {
+    .hero-text {
+      font-size: 1.75rem !important;
+    }
+
+    .card-container {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Optimizaciones para tablets */
+  @media screen and (min-width: 641px) and (max-width: 1023px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  /* Mejoras para pantallas grandes */
+  @media screen and (min-width: 1536px) {
+    .container {
+      max-width: 1400px;
+    }
+  }
+}
+
+/* Optimizaciones para impresión */
+@media print {
+  .nav-bar, .footer, .animate-on-scroll {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
 }
 
 .font-montserrat {
@@ -92,4 +114,9 @@ html {
 
 .font-opensans {
   font-family: 'Open Sans', sans-serif;
+}
+
+/* Optimizaciones de rendimiento */
+img {
+  content-visibility: auto;
 }

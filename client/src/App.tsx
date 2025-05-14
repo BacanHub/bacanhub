@@ -18,44 +18,15 @@ function Router() {
 
 function App() {
   useEffect(() => {
-    // Update the document title
-    document.title = "BACAN - Transformación Empresarial Argentina";
+    // Check for dark mode preference in localStorage or system
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     
-    // Add meta tags for SEO
-    const metaDescription = document.createElement('meta');
-    metaDescription.name = 'description';
-    metaDescription.content = 'BACAN impulsa la modernización de empresas argentinas con tecnología de punta y soluciones personalizadas para aumentar su competitividad.';
-    document.head.appendChild(metaDescription);
-    
-    const metaKeywords = document.createElement('meta');
-    metaKeywords.name = 'keywords';
-    metaKeywords.content = 'transformación digital, empresas argentinas, modernización empresarial, tecnología, innovación';
-    document.head.appendChild(metaKeywords);
-    
-    // OpenGraph tags
-    const ogTitle = document.createElement('meta');
-    ogTitle.setAttribute('property', 'og:title');
-    ogTitle.content = 'BACAN - Transformación Empresarial Argentina';
-    document.head.appendChild(ogTitle);
-    
-    const ogDescription = document.createElement('meta');
-    ogDescription.setAttribute('property', 'og:description');
-    ogDescription.content = 'Impulsamos la modernización y competitividad de tu negocio con soluciones que integran diseño, tecnología y eficiencia con identidad nacional.';
-    document.head.appendChild(ogDescription);
-    
-    const ogType = document.createElement('meta');
-    ogType.setAttribute('property', 'og:type');
-    ogType.content = 'website';
-    document.head.appendChild(ogType);
-    
-    // Clean up function to remove meta tags
-    return () => {
-      document.head.removeChild(metaDescription);
-      document.head.removeChild(metaKeywords);
-      document.head.removeChild(ogTitle);
-      document.head.removeChild(ogDescription);
-      document.head.removeChild(ogType);
-    };
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
 
   return (
