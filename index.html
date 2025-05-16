@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<script>
-  (function(){
-    var redirect = sessionStorage.redirect;
-    delete sessionStorage.redirect;
-    if (redirect <head><head> redirect !== location.href) {
-      history.replaceState(null, null, redirect.replace('/bacanhub/', '/bacanhub#/'));
-    }
-  })();
-</script>
+    <script>
+(function(){
+  var redirect = sessionStorage.redirect;
+  delete sessionStorage.redirect;
+  if (redirect && redirect !== location.href) {
+    history.replaceState(null, null, redirect);
+  }
+})();
+    </script>
         <!-- GitHub Pages SPA redirect script -->
         <script type="text/javascript">
           // Single-page application for GitHub Pages
@@ -54,8 +54,8 @@
         }
       }(window.location))
     </script>
-    <script type="module" crossorigin src="/bacanhub/assets/index-CSX7XfTn.js"></script>
-    <link rel="stylesheet" crossorigin href="/bacanhub/assets/index-D--_mWF8.css">
+    <script type="module" crossorigin src="/assets/index-Ds6vxpb1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D--_mWF8.css">
   </head>
   <body>
     <div id="root"></div>
