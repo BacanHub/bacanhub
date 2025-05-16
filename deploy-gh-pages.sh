@@ -19,30 +19,23 @@ cat > 404.html << 'EOL'
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BACAN - Page Not Found</title>
+  <title>BACAN - Redirecting</title>
   <script>
-    // Single Page Apps for GitHub Pages
-    // MIT License from https://github.com/rafgraph/spa-github-pages
-    // This script takes the current URL and converts the path and query
-    // string into a query parameter that GitHub Pages can handle properly
-    var pathSegmentsToKeep = 1;
-
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+    // GitHub Pages SPA router - adapted from https://github.com/rafgraph/spa-github-pages
+    sessionStorage.redirect = location.href;
   </script>
+  <meta http-equiv="refresh" content="0;URL='/bacanhub/'">
 </head>
 <body>
-  <h2>Page Not Found</h2>
-  <p>Redirecting to homepage...</p>
+  <h2>Redirecting to the app...</h2>
+  <p>If you are not redirected automatically, <a href="/bacanhub/">click here</a>.</p>
 </body>
 </html>
 EOL
+
+# Create a new index.html to handle redirects from 404.html
+cat index.html | sed -e "s/<head>/<head>\n<script>\n  (function(){\n    var redirect = sessionStorage.redirect;\n    delete sessionStorage.redirect;\n    if (redirect && redirect !== location.href) {\n      history.replaceState(null, null, redirect.replace('\/bacanhub\/', '\/bacanhub#\/'));\n    }\n  })();\n<\/script>/" > index.new.html
+mv index.new.html index.html
 
 # Create or update .nojekyll file to bypass Jekyll processing
 echo "📄 Creating .nojekyll file..."
