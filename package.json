@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://bacanhub.github.io/",
+  "homepage": "https://bacanhub.github.io/bacanhub/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
