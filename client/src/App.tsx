@@ -30,6 +30,10 @@ function useHashLocation(): [string, (to: string) => void] {
     
     // Set up event listener
     window.addEventListener("hashchange", handler);
+    
+    // Call handler once on initial load
+    handler();
+    
     return () => window.removeEventListener("hashchange", handler);
   }, []);
   

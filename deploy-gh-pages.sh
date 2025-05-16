@@ -24,18 +24,47 @@ cat > 404.html << 'EOL'
     // GitHub Pages SPA router - adapted from https://github.com/rafgraph/spa-github-pages
     sessionStorage.redirect = location.href;
   </script>
-  <meta http-equiv="refresh" content="0;URL='/bacanhub/'">
+  <meta http-equiv="refresh" content="0;URL='/'">
 </head>
 <body>
   <h2>Redirecting to the app...</h2>
-  <p>If you are not redirected automatically, <a href="/bacanhub/">click here</a>.</p>
+  <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
 </body>
 </html>
 EOL
 
-# Create a new index.html to handle redirects from 404.html
-cat index.html | sed -e "s/<head>/<head>\n<script>\n  (function(){\n    var redirect = sessionStorage.redirect;\n    delete sessionStorage.redirect;\n    if (redirect && redirect !== location.href) {\n      history.replaceState(null, null, redirect.replace('\/bacanhub\/', '\/bacanhub#\/'));\n    }\n  })();\n<\/script>/" > index.new.html
+# Add the redirect script to the head of index.html
+echo "📄 Modifying index.html for SPA routing..."
+# Instead of using sed, we'll create a new script that's inserted with a simple JS operation
+# This is cleaner and avoids syntax errors
+cat > redirect-script.js << 'EOL'
+(function(){
+  var redirect = sessionStorage.redirect;
+  delete sessionStorage.redirect;
+  if (redirect && redirect !== location.href) {
+    history.replaceState(null, null, redirect);
+  }
+})();
+EOL
+
+# Insert the script at the beginning of the head tag
+awk '
+  /<head>/ {
+    print $0;
+    print "    <script>";
+    system("cat redirect-script.js");
+    print "    </script>";
+    next;
+  }
+  { print }
+' index.html > index.new.html
+
 mv index.new.html index.html
+rm redirect-script.js
+
+# Create CNAME file for GitHub Pages
+echo "📄 Creating CNAME file..."
+echo "bacanhub.github.io" > CNAME
 
 # Create or update .nojekyll file to bypass Jekyll processing
 echo "📄 Creating .nojekyll file..."
