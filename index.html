@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+(function(){
+  var redirect = sessionStorage.redirect;
+  delete sessionStorage.redirect;
+  if (redirect && redirect !== location.href) {
+    history.replaceState(null, null, redirect);
+  }
+})();
+    </script>
+        <!-- GitHub Pages SPA redirect script -->
+        <script type="text/javascript">
+          // Single-page application for GitHub Pages
+          // MIT License from https://github.com/rafgraph/spa-github-pages
+          (function(l) {
+            if (l.search[1] === '/' ) {
+              var decoded = l.search.slice(1).split('&').map(function(s) { 
+                return s.replace(/~and~/g, '&')
+              }).join('?');
+              window.history.replaceState(null, null,
+                l.pathname.slice(0, -1) + decoded + l.hash
+              );
+            }
+          }(window.location))
+        </script>
+      
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>BACAN - Transformación Empresarial Argentina</title>
+    <meta name="description" content="BACAN impulsa la modernización de empresas argentinas con tecnología de punta y soluciones personalizadas para aumentar su competitividad." />
+    <meta name="keywords" content="transformación digital, empresas argentinas, modernización empresarial, tecnología, innovación" />
+    
+    <!-- GitHub Pages SPA router support -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License from https://github.com/rafgraph/spa-github-pages
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/bacanhub/assets/index-DD2IhzBI.js"></script>
+    <link rel="stylesheet" crossorigin href="/bacanhub/assets/index-D--_mWF8.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
