@@ -14,7 +14,23 @@ const hashNavigator = {
   
   // Navigate to path by setting hash
   push: (path: string): void => {
-    if (typeof window !== "undefined") window.location.hash = path;
+    if (typeof window !== "undefined") {
+      // Si es un hash de sección (comienza con #), manejar el scroll
+      if (path.startsWith('#')) {
+        const element = document.querySelector(path);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+      // Si es una ruta normal, actualizar la URL sin hash
+      if (path === '/') {
+        window.location.hash = '';
+        return;
+      }
+      // Para otras rutas, mantener el hash
+      window.location.hash = path;
+    }
   }
 };
 
@@ -44,7 +60,7 @@ function AppRouter() {
   return (
     <Router hook={useHashLocation}>
       <Route path="/" component={Home} />
-      <Route component={NotFound} />
+      <Route path="/:rest*" component={NotFound} />
     </Router>
   );
 }
@@ -60,6 +76,62 @@ function App() {
     } else {
       document.documentElement.classList.remove("dark");
     }
+
+    // Manejar el scroll al cargar la página
+    const handleInitialScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    };
+
+    handleInitialScroll();
+
+    // Prevenir el scroll más allá del footer
+    const handleScroll = () => {
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Solo prevenir el scroll si estamos intentando ir más allá del footer
+        if (footerTop <= windowHeight && scrollY + windowHeight >= documentHeight - 10) {
+          window.scrollTo({
+            top: documentHeight - windowHeight,
+            behavior: 'auto'
+          });
+        }
+      }
+    };
+
+    // Manejar clicks en enlaces internos
+    const handleInternalLinks = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a');
+      
+      if (link && link.hash) {
+        e.preventDefault();
+        const element = document.querySelector(link.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleInternalLinks);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleInternalLinks);
+    };
   }, []);
 
   return (

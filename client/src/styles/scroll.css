@@ -1,0 +1,28 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Ajusta este valor según la altura de tu navbar */
+}
+
+/* Prevenir scroll más allá del footer */
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Asegurar que el footer siempre esté visible */
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Prevenir scroll infinito */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar que el contenido principal tenga un padding-bottom para evitar que el footer se superponga */
+main {
+  padding-bottom: 2rem;
+} 
