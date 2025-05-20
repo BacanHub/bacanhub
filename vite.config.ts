@@ -33,7 +33,7 @@ const githubPagesPlugin = (): Plugin => {
 };
 
 export default defineConfig({
-  base: "/",
+  base: "/bacanhub/",
   plugins: [
     react(),
     githubPagesPlugin(),

@@ -17,7 +17,7 @@ const AboutSection = () => {
           {...fadeIn}
         >
           <h2 className="font-montserrat font-bold text-3xl md:text-4xl mb-4">
-            Quiénes Somos
+            Nuestra Misión
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-lg">

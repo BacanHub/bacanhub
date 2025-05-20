@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import logoImage from '../assets/logo.png';
 
@@ -32,6 +31,15 @@ export default function NavBar() {
     setMobileMenuOpen(false);
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      closeMobileMenu();
+    }
+  };
+
   const navLinks = [
     { href: "#inicio", label: "Inicio" },
     { href: "#nosotros", label: "Nosotros" },
@@ -53,6 +61,7 @@ export default function NavBar() {
             <a 
               key={link.href}
               href={link.href} 
+              onClick={(e) => handleNavClick(e, link.href)}
               className="font-medium text-foreground hover:text-primary transition duration-200"
               aria-label={link.label}
             >
@@ -84,8 +93,8 @@ export default function NavBar() {
             <a 
               key={link.href}
               href={link.href} 
+              onClick={(e) => handleNavClick(e, link.href)}
               className="font-medium text-foreground hover:text-primary py-2 transition duration-200"
-              onClick={closeMobileMenu}
               aria-label={link.label}
             >
               {link.label}

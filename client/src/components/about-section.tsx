@@ -69,56 +69,6 @@ export default function AboutSection() {
             </p>
           </div>
         </div>
-
-        <div className="mt-20 pt-16 border-t border-border">
-          <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-primary mb-4">Quiénes Somos</h2>
-            <div className="w-20 h-1 bg-accent mx-auto mb-6"></div>
-            <p className="text-foreground max-w-3xl mx-auto text-lg">
-              Nuestro equipo de profesionales trabaja con pasión para transformar empresas argentinas.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto card-container">
-            <div className="bg-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-              <div className="w-32 h-32 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <User className="w-16 h-16 text-primary" />
-              </div>
-              <h3 className="font-montserrat font-semibold text-xl text-primary mb-2">John Doe</h3>
-              <p className="text-accent font-medium mb-3">Fundador & CEO</p>
-              <p className="text-foreground mb-4">
-                Especialista en optimización de procesos y transformación digital con más de 10 años de experiencia.
-              </p>
-              <div className="flex space-x-3">
-                <a href="#" aria-label="LinkedIn de John Doe" className="text-primary hover:text-accent transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="#" aria-label="Email de John Doe" className="text-primary hover:text-accent transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                </a>
-              </div>
-            </div>
-            
-            <div className="bg-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-              <div className="w-32 h-32 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <User className="w-16 h-16 text-primary" />
-              </div>
-              <h3 className="font-montserrat font-semibold text-xl text-primary mb-2">Jane Doe</h3>
-              <p className="text-accent font-medium mb-3">Directora de Operaciones</p>
-              <p className="text-foreground mb-4">
-                Experta en gestión de proyectos y estrategias de crecimiento para empresas latinoamericanas.
-              </p>
-              <div className="flex space-x-3">
-                <a href="#" aria-label="LinkedIn de Jane Doe" className="text-primary hover:text-accent transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                </a>
-                <a href="#" aria-label="Email de Jane Doe" className="text-primary hover:text-accent transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
