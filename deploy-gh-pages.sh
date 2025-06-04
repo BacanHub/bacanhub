@@ -64,7 +64,7 @@ rm redirect-script.js
 
 # Create CNAME file for GitHub Pages
 echo "📄 Creating CNAME file..."
-echo "bacanhub.github.io" > CNAME
+echo "bacanhub.com" > CNAME
 
 # Create or update .nojekyll file to bypass Jekyll processing
 echo "📄 Creating .nojekyll file..."
